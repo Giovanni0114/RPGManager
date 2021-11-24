@@ -1,15 +1,23 @@
 <?php
+$db = mysqli_connect("localhost", "root", "", "rpg");
+
+    $query = "SELECT COUNT(character_id) FROM tbcharacter";
+    $result = mysqli_query($db, $query);
+    while ($row = mysqli_fetch_array  ($result))
+        $count = $row['COUNT(character_id)'];
+
     $_SESSION['c_id'] = 1;
-    if (isset($_GET['id'])){
+    if (isset($_GET['id']) && $_GET['id'] < $count+1){
         $_SESSION['c_id'] = $_GET['id'];
     }
 
-    $db = mysqli_connect("localhost", "root", "", "rpg");
 
     $query = "SELECT * FROM tbcharacter JOIN tbclass ON tbcharacter.class_id=tbclass.class_id JOIN tbspecies ON tbspecies.species_id = tbcharacter.species_id JOIN tbapperance ON tbcharacter.apperance_id = tbapperance.apperance_id  WHERE tbcharacter.character_id =".$_SESSION['c_id'];
     $result = mysqli_query($db, $query);
     while ($row = mysqli_fetch_array  ($result))
     {
+        $id = $row['character_id'];
+
         // echo implode(" ", $row);
         // echo "<tr>";
         // echo "<td>".$row['first_name']."</td>";
@@ -35,14 +43,13 @@
         
         // echo "<td>".$row['class_name']."</td>";
         $apperance = $row['description'];
-    }
-    
-    $query = "SELECT COUNT(character_id) FROM tbcharacter";
-    $result = mysqli_query($db, $query);
-    while ($row = mysqli_fetch_array  ($result))
-        $count = $row['COUNT(character_id)'];
+        $player = $row['player_id'];
 
-    $query = "SELECT tbplayer.first_name, tbplayer.last_name, tbplayer.player_id  FROM tbcharacter JOIN tbplayer ON tbplayer.player_id = tbcharacter.character_id WHERE tbcharacter.character_id =".$_SESSION['c_id'];
+        
+    }
+
+
+    $query = "SELECT tbplayer.first_name, tbplayer.last_name, tbplayer.player_id  FROM tbcharacter JOIN tbplayer ON tbplayer.player_id = tbcharacter.player_id WHERE tbcharacter.character_id =".$id;
     $result = mysqli_query($db, $query);
     while ($row = mysqli_fetch_array  ($result)){
 
@@ -228,8 +235,9 @@
         
         ?>
 
-
-        <input type="button" value="ADD NEW" id="add">
+        <a href="character_mod.php?nip=<?php echo $count + 1?>">
+            <input type="button" value="ADD NEW" id="add">
+        </a>
     </div>
 <script src="script.js"> </script>
 </body>

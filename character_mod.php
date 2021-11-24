@@ -25,7 +25,11 @@
 			$class = $row['class_id'];
 			$species = $row['species_id'];
 			$apperance = $row['apperance_id'];
+			$player = $row['player_id'];
 		}
+	}
+	else{
+		$id = $_GET['nip'];
 	}
 
 	
@@ -50,13 +54,20 @@
 
 <a href="index.html">
 	<?php
-		if ($edit) echo "<h1>RPG Manager | Chatacter Editor</h1>";
-		else echo "<h1>RPG Manager | Chatacter Creator</h1>"
+		if ($edit) echo "<h1>RPG Manager | Character Editor</h1>";
+		else echo "<h1>RPG Manager | Character Creator</h1>"
 	?>
 </a>
 
-<form action="update_character.php" method="post">
-	<input type="text" name="fname" id="fname" placeholder="First name"
+<?PHP
+if ($edit)	
+echo "<form action='update_character.php' method='post'>";
+else
+echo "<form action='add_character.php' method='post'>";
+?>
+	
+
+<input type="text" name="fname" id="fname" placeholder="First name"
 	value="<?php echo ($edit)?$f_name:'';?>">
 	<input type="text" name="lname" id="lname" placeholder="Last name"
 	value="<?php echo ($edit)?$l_name:'';?>">
@@ -72,7 +83,7 @@
 	$result = mysqli_query($db, $query);
 
 	while ($row = mysqli_fetch_array($result)){
-		echo "<option value=".$row['class_id']." ".($edit?'selected':'').">";
+		echo "<option value=".$row['class_id']." ".(($edit && $row['class_id'] == $class)?'selected':'').">";
 		echo $row['class_name'];
 		echo "</option>";
 	}
@@ -87,7 +98,7 @@
 	$result = mysqli_query($db, $query);
 
 	while ($row = mysqli_fetch_array($result)){
-		echo "<option value=".$row['species_id']." ".($edit?'selected':'').">";
+		echo "<option value=".$row['species_id']." ".(($edit && $row['species_id'] == $species)?'selected':'').">";
 		echo $row['species_name'];
 		echo "</option>";
 	}
@@ -102,7 +113,7 @@
 	$result = mysqli_query($db, $query);
 
 	while ($row = mysqli_fetch_array($result)){
-		echo "<option value=".$row['apperance_id']." ".($edit?'selected':'').">";
+		echo "<option value=".$row['apperance_id']." ".(($edit && $row['apperance_id'] == $apperance)?'selected':'').">";
 		echo $row['description'];
 		echo "</option>";
 	}
@@ -110,11 +121,11 @@
 	</select>
 	<br>
 	<div style="width: 1208px; margin: 0 auto ;">
-	<div class="backsite">	
-		<label for="str">
-			</span><span class='stat_name'>
+		<div class="backsite">	
+			<label for="str">
+				</span><span class='stat_name'>
 			Strength
-			</span>
+		</span>
 		</label>
 		<input type="text" name="str" class='stats' 
 			value="<?php echo ($edit)?$str:'10';?>">
@@ -129,16 +140,16 @@
 		</label>
 		<input type="text" name="dex" class='stats' 
 			value="<?php echo ($edit)?$dex:'10';?>">
-		<label for="dex">0</label>
-		<br>
+			<label for="dex">0</label>
+			<br>
 			
-		<label for="int">
-			<span class='stat_name'>
-			Inteligence
+			<label for="int">
+				<span class='stat_name'>
+					Inteligence
 			</span>
 		</label>
 		<input type="text" name="int" class='stats' 
-			value='<?php echo ($edit)?$int:'10';?>'>
+		value='<?php echo ($edit)?$int:'10';?>'>
 		<label for="int">0</label>
 	</div>
 
@@ -146,10 +157,10 @@
 		<label for="str">
 			</span><span class='stat_name'>
 			Health
-			</span>
+		</span>
 		</label>
 		<input type="text" name="hp" class='stats' 
-			value="<?php echo ($edit)?$hp:'10';?>">
+			value="<?php echo ($edit)?$hp:'12';?>">
 		<br>
 		
 		
@@ -159,18 +170,37 @@
 			</span>
 		</label>
 		<input type="text" name="prof" class='stats' 
-			value="<?php echo ($edit)?$prof:'10';?>">
+		value="<?php echo ($edit)?$prof:'3';?>">
 		<br>
-			
+		
 		<label for="int">
 			<span class='stat_name'>
 				Experience
 			</span>
 		</label>
 		<input type="text" name="pd" class='stats' 
-			value='<?php echo ($edit)?$pd:'10';?>'>
+		value='<?php echo ($edit)?$pd:'0';?>'>
 	</div>
 	<div style="clear: both;"> </div>
+	
+	<div id="cplayer">
+	<select name="player" id="player">
+		<option value="0">Player</option>
+	<?php
+	$db = mysqli_connect("localhost", "root", "", "rpg");
+	$query = "SELECT player_id, first_name, last_name FROM tbplayer";
+	$result = mysqli_query($db, $query);
+
+	while ($row = mysqli_fetch_array($result)){
+		echo "<option value=".$row['player_id']." ".(($edit && $row['player_id'] == $player)?'selected':'').">";
+		echo $row['first_name']." ".$row['last_name'];
+		echo "</option>
+		";
+	}
+	?>
+	</select>
+
+	</div>
 	
 	<input type="hidden" name="id" value="<?php echo $id ?>">
 

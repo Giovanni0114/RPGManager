@@ -107,6 +107,17 @@
                 <div style="clear: both;"></div>
             </div>
 
+            <div class="place" style="margin-top:40px;">
+                <div class="l">Favourite class</div>
+                <div class="content">
+                    <span>  
+                        <?php
+                         echo $fav_class 
+                         ?>
+                    </span>
+                </div>
+                <div style="clear: both;"></div>
+            </div>
             
         </div>
         <div style="clear: both;"></div>
@@ -116,7 +127,10 @@
 
 
     <div id="nav">
-        <input type="button" value="EDIT" id="edit">
+
+        <a href="player_mod.php?id=<?php echo $_GET['id'] ?>">
+            <input type="button" value="EDIT" id="edit">
+        </a>
 
         <?php 
         if($_SESSION['p_id'] == 1){
@@ -165,8 +179,9 @@
         
         ?>
 
-
-        <input type="button" value="ADD NEW" id="add">
+        <a href="player_mod.php?nip=<?php echo $count + 1?>">
+            <input type="button" value="ADD NEW" id="add">
+        </a>
     </div>
 <script src="script.js"> </script>
 </body>
