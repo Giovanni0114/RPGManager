@@ -1,16 +1,23 @@
 <?php
+    $db = mysqli_connect("localhost", "root", "", "rpg");
+
+
+    $query = "SELECT COUNT(player_id) FROM tbplayer";
+    $result = mysqli_query($db, $query);
+    while ($row = mysqli_fetch_array  ($result))
+        $count = $row['COUNT(player_id)'];
+
     $_SESSION['p_id'] = 1;
-    if (isset($_GET['id'])){
+    if (isset($_GET['id']) && $_GET['id'] < $count+1){
         $_SESSION['p_id'] = $_GET['id'];
     }
 
-    $db = mysqli_connect("localhost", "root", "", "rpg");
+
 
     $query = "SELECT first_name, last_name, phone_number, hours_played, class_name FROM tbplayer JOIN tbclass ON fav_class=class_id WHERE player_id=".$_SESSION['p_id'];
     $result = mysqli_query($db, $query);
     while ($row = mysqli_fetch_array  ($result))
     {
-        // echo "<tr>";
         // echo "<td>".$row['first_name']."</td>";
         $f_name = $row['first_name'];
         
@@ -118,6 +125,36 @@
                 </div>
                 <div style="clear: both;"></div>
             </div>
+
+            <h3>Characters</h3>
+                <?php
+                     $query = "SELECT tbcharacter.first_name, tbcharacter.last_name, tbcharacter.character_id FROM tbcharacter JOIN tbplayer ON tbplayer.player_id = tbcharacter.player_id WHERE tbplayer.player_id =".$_GET['id'];
+                     $result = mysqli_query($db, $query);
+                     while ($row = mysqli_fetch_array  ($result))
+                     {
+                        $d = mysqli_connect("localhost", "root", "", "rpg");
+                         
+                         $chad_id = $row['character_id'];
+                         $f = $row['first_name'];
+                         $l = $row['last_name'];
+                        $q = "SELECT tbclass.class_name, tbapperance.description, tbspecies.species_name FROM tbcharacter JOIN tbclass ON tbcharacter.class_id=tbclass.class_id JOIN tbspecies ON tbspecies.species_id = tbcharacter.species_id JOIN tbapperance ON tbcharacter.apperance_id = tbapperance.apperance_id  WHERE tbcharacter.character_id="   .$chad_id;
+                        $r = mysqli_query($d, $q);
+                        while ($ro = mysqli_fetch_array ($r))
+                        {
+                            $cl = $ro['class_name'];
+                            $app = $ro['description'];
+                            $spe = $ro['species_name'];
+                        }
+
+
+                        echo "<a href='characters.php?id=$chad_id'>";
+                        echo "<div class='char_list'><b>$f $l</b> - $app $spe $cl</div>";
+                        echo "</a>";
+
+                     }
+
+                ?>
+
             
         </div>
         <div style="clear: both;"></div>

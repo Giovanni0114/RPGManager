@@ -208,6 +208,12 @@ echo "<form action='add_character.php' method='post'>";
 		<input type="button" value="Cancel">
 	</a>
 	<input type="submit" value="Apply">
+	<br>
+	<?php
+	if ($edit)
+		echo '<a href="delete_player.php?id='.$id.'"><input id="del" type="button" value="DELETE"></a>';
+
+	?>
 </form>
 
 <script src="script.js"> </script>
