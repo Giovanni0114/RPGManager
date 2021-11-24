@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>RPG Manager</title>
+
+	<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+	<a href="index.html">
+		<h1>RPG Manager</h1>
+	</a>
+
+	<div id='mains'>
+		<a href="players.php?id=1">
+			<input type="button" value="PLAYERS">
+		</a>
+		<input type="button" value="PARTY">
+		
+		<a href="characters.php?id=1">
+			<input type="button" value="CHARACTERS">
+		</a>
+	
+	</div>
+	
+	<div id="repo">
+		<input type="button" value="Classes" onclick="show('class.php')">
+		<input type="button" value="Spieces" onclick="show('species.php')">
+		<input type="button" value="Backgrounds" onclick="show('bg.php')">
+		<input type="button" value="Appearances (Skin)" onclick="show('app.php')">
+	</div>
+
+	
+	<div id="result">
+		
+	</div>
+
+	<script type="text/javascript" src="data.json"></script>
+	<script src="script.js"></script>
+</body>
+</html>

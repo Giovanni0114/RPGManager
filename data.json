@@ -1,0 +1,35 @@
+[{
+	"sword": "Just a sword, simple but lethal!",
+	"hammer": "Good ’ol war hammer never gets old!",
+	"holy_symbol": "A holy symbol is a representation of a god or pantheon. Always keep close to your heart.",
+	"daggers": "Stabby bastards, nimble and swift.",
+	"wand": "Excellent tool to focum magic energy. You can also perform a mighty BONK",
+	"bow": "You’re doing a great job with social distancing",
+
+	"chainmail": "Made of interlocking metal rings, chain mail includes a layer of quilted fabric worn underneath the mail to prevent chafing and to cushion the impact of blows.",
+	"leather_armor": "The breastplate and shoulder protectors of this armor are made of leather that has been stiffened by being boiled in oil.",
+	"robe": "Ahhh.. classic magic stuff. A long, loose outer garment reaching to the ankles. Deep, pointy hood and a lot of pockets.",
+	"plate_armor": "Plate consists of shaped, interlocking metal plates to cover the entire body. You are real tanky boi",
+
+	"utility/dps": "You are jack of all trades! Very useful in every circumstances.",
+	"dps": "Stabing, slashing, pircing, magic bolting, raging, and holy smiting. All this way to deliver some damage to your opponent is great and you know it.",
+	"healer": "You can feel useless in fight, always weak and useless, unless someone is bleeding out. But you are most important part of the team and dont forget it",
+	"tank": "Protecting other members of your party is your everyday shit. You are stubborn, tough, and can endurance REALLY a lot.",
+	"utility": "Using a combination of luck and skill, you can usually find solutions to your problems. Their talents come from your ingenuity, cunning, training, and, of course, good fortune, all of which makes you adaptable to any situation.",
+	
+	"human": "",
+	"elf": "",
+	"half-orc": "",
+	"gnome": "",
+	"dwarf": "",
+	"half-elf": "",
+
+	"warrior": "Perhaps the most diverse class of characters in the world. Questing knights, conquering overlords, royal champions, elite foot soldiers, hardened mercenaries, and bandit kings — as warriors, they all share an unparalleled mastery with weapons and armor, and a thorough knowledge of the skills of combat",
+	"paladin": "Paladins are united by their oaths to stand against the forces of evil. A paladin’s oath is a powerful bond. It is a source of power that turns a devout warrior into a blessed champion.",
+	"cleric": "Clerics are intermediaries between the mortal world and the distant planes of the gods. As varied as the gods they serve, clerics strive to embody the handiwork of their deities. No ordinary priest, a cleric is imbued with divine magic.",	
+	"rouge" : "Rogues rely on skill, stealth, and their foes vulnerabilities to get the upper hand in any situation. They have a knack for finding the solution to just about any problem, demonstrating a resourcefulness and versatility that is the cornerstone of any successful adventuring party.",
+	"wizard": "",
+	"ranger": ""
+	
+
+}]
