@@ -3,7 +3,7 @@
 	$p_id = $_GET['p_id'];	
 
 	$db = mysqli_connect("localhost", "root", "", "rpg");
-	$query = "INSERT INTO `tbcharacter_party`(`party_id`, `character_id`) VALUES ($p_id,$c_id)";
+	$query = "DELETE FROM tbcharacter_party WHERE party_id = $p_id AND character_id =$c_id";
 
 	if ($db->query($query) === TRUE) {
 		echo "New record created successfully";
@@ -16,6 +16,6 @@
 	header("partys.php?id=$p_id");
 ?>
 
-<!-- <script> -->
-	window.location.assign()
-<!-- </script> -->
+<script>
+	window.location.assign("partys.php?id=<?php $p_id ?>")
+</script>

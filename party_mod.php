@@ -80,14 +80,14 @@ else echo "<form action='add_party.php' method='post'>";
                         }
 
                         echo "<div class='char_list_b'><b>$f $l</b> - $app $spe $cl</div>";
-			echo "<div class='rm'>Remove</div>";
+			echo "<div class='rm' onclick='del($chad_id)'>Remove</div>";
 			echo "<div style='clear:both'></div>";
 
                      }
 		}
 		?>
-		     	<select style='width: 1020px;' class='char_list_b'>
-		     	<option id='123' value='0'>Player</option>
+		     	<select style='width: 1020px;' class='char_list_b' id='123'>
+		     	<option value='0'>Player</option>
 
 
 			<?php
