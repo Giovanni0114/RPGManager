@@ -104,7 +104,7 @@ $db = mysqli_connect("localhost", "root", "", "rpg");
 
 
     <div id="nav">
-        <a href="character_mod.php?id=<?php echo $_SESSION['pa_id'] ?>">
+        <a href="party_mod.php?id=<?php echo $_SESSION['pa_id'] ?>">
         <input type="button" value="EDIT" id="edit">
         <a>
 
@@ -155,7 +155,7 @@ $db = mysqli_connect("localhost", "root", "", "rpg");
         
         ?>
 
-        <a href="character_mod.php?nip=<?php echo $count + 1?>">
+        <a href="party_mod.php?nip=<?php echo $count + 1?>">
             <input type="button" value="ADD NEW" id="add">
         </a>
     </div>
