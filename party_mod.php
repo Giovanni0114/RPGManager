@@ -3,8 +3,7 @@
 	$db = mysqli_connect("localhost", "root", "", "rpg");
 
 	if (isset($_GET['id'])) {
-		$edit = true;
-
+			$edit = true;
 			$query = "SELECT * FROM tbparty WHERE party_id =".$_GET['id'];
 			$result = mysqli_query($db, $query);
     		while ($row = mysqli_fetch_array  ($result))
@@ -13,8 +12,14 @@
 			$id = $row['party_id'];
 		}
 	}
-	else{
+	else if(isset($_GET['nip'])){
 		$id = $_GET['nip'];
+	}
+	else{
+		$query = "SELECT COUNT(party_id) FROM tbparty";
+    		$result = mysqli_query($db, $query);
+    		while ($row = mysqli_fetch_array  ($result))
+        	$id = $row['COUNT(party_id)'];
 	}
 
 	
@@ -44,7 +49,7 @@
 	?>
 </a>
 
-<?PHP
+<?php
 if ($edit) echo "<form action='update_party.php' method='post'>";
 else echo "<form action='add_party.php' method='post'>";
 ?>
@@ -75,14 +80,17 @@ else echo "<form action='add_party.php' method='post'>";
                         }
 
                         echo "<div class='char_list_b'><b>$f $l</b> - $app $spe $cl</div>";
-			echo "<div class='rm'> Remove</div>";
+			echo "<div class='rm'>Remove</div>";
 			echo "<div style='clear:both'></div>";
 
                      }
 		}
-		     	echo "<select style='width: 1020px;' class='char_list_b'>";
-		     	echo "<option value='0'>Player</option>";
+		?>
+		     	<select style='width: 1020px;' class='char_list_b'>
+		     	<option value='0'>Player</option>
 
+
+			<?php
 			$query = "SELECT character_id, first_name, last_name FROM tbcharacter";
 			$result = mysqli_query($db, $query);
 
@@ -91,11 +99,10 @@ else echo "<form action='add_party.php' method='post'>";
 				echo $row['first_name']." ".$row['last_name'];
 				echo "</option>";
 			}
-		 	echo    "</select>";
-			echo "<div class='rm'> Add</div>";
-			echo "<div style='clear:both'></div>";
-
-                ?>
+			?>
+		 	</select>
+			<div class='rm'> Add</div>
+			<div style='clear:both'></div>
 
 	</div>
 	
