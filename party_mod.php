@@ -87,7 +87,7 @@ else echo "<form action='add_party.php' method='post'>";
 		}
 		?>
 		     	<select style='width: 1020px;' class='char_list_b'>
-		     	<option value='0'>Player</option>
+		     	<option id='123' value='0'>Player</option>
 
 
 			<?php
@@ -95,20 +95,20 @@ else echo "<form action='add_party.php' method='post'>";
 			$result = mysqli_query($db, $query);
 
 			while ($row = mysqli_fetch_array($result)){
-				echo "<option value=".$row['player_id'].">";
+				echo "<option value=".$row['character_id'].">";
 				echo $row['first_name']." ".$row['last_name'];
 				echo "</option>";
 			}
 			?>
 		 	</select>
-			<div class='rm'> Add</div>
+			<div class='rm' onclick="add()"> Add</div>
 			<div style='clear:both'></div>
 
 	</div>
 	
 
 
-	<input type="hidden" name="id" value="<?php echo $id ?>">
+	<input id='hid' type="hidden" name="id" value="<?php echo $id ?>">
 
 	<a href="partys.php?id=<?php echo $id ?>">
 		<input type="button" value="Cancel">
@@ -126,5 +126,6 @@ echo '<a href="delete_party.php?id='.$id.'"><input id="del" type="button" value=
 
 
 <script src="script.js"> </script>
+<script src="party_mod.js"> </script>
 </body>
 </html>

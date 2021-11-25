@@ -1,9 +1,9 @@
 <?php
-	$c_id = $_GET['c_id'];
-	$p_id = $_GET['p_id'];
+	$id = $_POST['id'];
+	$name = $_POST['name'];
 
 	$db = mysqli_connect("localhost", "root", "", "rpg");
-	$query = "INSERT INTO `tbcharacter_party`(`party_id`, `character_id`) VALUES ($c_id,'$p_id')";
+	$query = "INSERT INTO `tbparty`(`party_id`, `party_name`) VALUES ($id,'$name')";
 
 	if ($db->query($query) === TRUE) {
 		echo "New record created successfully";
@@ -15,5 +15,5 @@
 ?>
 
 <script>
-	// window.location.assign("partys.php?id=<?php echo $id?>")
+	window.location.assign("partys.php?id=<?php echo $id?>")
 </script>
