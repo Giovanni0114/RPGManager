@@ -188,5 +188,7 @@ $db = mysqli_connect("localhost", "root", "", "rpg");
         </a>
     </div>
 <script src="script.js"> </script>
+<script src="arrow_navigation.js"> </script>
+
 </body>
 </html>

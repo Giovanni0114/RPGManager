@@ -2,6 +2,7 @@ var http_request = false;
 var curShown = undefined;
 var data = undefined;
 
+
 function readTextFile(file, callback) {
 	var rawFile = new XMLHttpRequest();
 	rawFile.overrideMimeType("application/json");
@@ -63,15 +64,32 @@ function alertContents(http_request) {
 	{
 		btns[i].addEventListener("mouseover", ()=>{
 			var d = data[btns[i].innerText.toLowerCase().replace(' ', '_')];
+			if(d != undefined){
+				if (d.length > 45)
+				d = d.slice(0,45) + "...";
 			
+				btns[i].style.cssText = "cursor: pointer;";
+			}
+
+
 			document.getElementById("result").style.cssText
-				= "--description: '"+(d==undefined?"":d)+"';";
-			
-			
+				= "--description: '"+(d==undefined?"":d)+"';";			
 			
 			// document.getElementById("result").style.cssText 
 			//	= "--description: url('img/eq/"+(btns[i].innerHTML).replace(' ', '_')+".png');";
 			// console.log("--description:"+btns[i].innerHTML+";");
 		})
+
+		btns[i].onclick = function(){
+			var d = data[btns[i].innerText.toLowerCase().replace(' ', '_')];
+			
+				if(d){
+					document.getElementById(btns[i].innerText+"dragable")?.remove();
+
+					createdragablediv(btns[i].innerText, d)
+					
+					dragElement(document.getElementById(btns[i].innerText+"dragable"));
+				}
+		}
 	}
 }
