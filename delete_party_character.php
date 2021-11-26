@@ -17,5 +17,5 @@
 ?>
 
 <script>
-	window.location.assign("partys.php?id=<?php $p_id ?>")
+	window.location.assign("partys.php?id=<?php $p_id ?>");
 </script>

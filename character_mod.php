@@ -211,7 +211,7 @@ echo "<form action='add_character.php' method='post'>";
 	<br>
 	<?php
 	if ($edit)
-		echo '<a href="delete_player.php?id='.$id.'"><input id="del" type="button" value="DELETE"></a>';
+		echo '<a href="delete_character.php?id='.$id.'"><input id="del" type="button" value="DELETE"></a>';
 
 	?>
 </form>

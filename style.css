@@ -284,6 +284,10 @@ td:hover::after{
 	text-align: left;
 }
 
+.content img{
+	height: 60px;
+}
+
 
 
 .playerinfo h2
@@ -343,7 +347,7 @@ form{
 	text-align: center;
 }
 
-form input[type=text], form input[type=number]{
+form input[type=text], form input[type=number], #wanted{
 	margin: 45px 3px 25px 3px;
 	/* width: 340px; */
 	font-size: 48px;
@@ -451,4 +455,8 @@ form label{
 	background-color: #4c5555;
 	color: azure;
 	transform: scale(1.05);
+}
+
+#wanted{
+	height:60px;
 }

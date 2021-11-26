@@ -18,16 +18,18 @@ $db = mysqli_connect("localhost", "root", "", "rpg");
     {
         $id = $row['party_id'];
         $name = $row['party_name'];
+        $rep = $row['reputation'];
+        $wanted = $row['wanted'];
     }
 
-    $query = "SELECT tbcharacter.first_name, tbcharacter.last_name, tbcharacter.character_id FROM tbcharacter JOIN tbcharacter_party ON tbcharacter.character_id = tbcharacter_party.character_id JOIN tbparty ON tbcharacter_party.party_id = tbparty.party_id WHERE tbparty.party_id=$id";
-    $result = mysqli_query($db, $query);
-    while ($row = mysqli_fetch_array  ($result)){
+    // $query = "SELECT tbcharacter.first_name, tbcharacter.last_name, tbcharacter.character_id FROM tbcharacter JOIN tbcharacter_party ON tbcharacter.character_id = tbcharacter_party.character_id JOIN tbparty ON tbcharacter_party.party_id = tbparty.party_id WHERE tbparty.party_id=$id";
+    // $result = mysqli_query($db, $query);
+    // while ($row = mysqli_fetch_array  ($result)){
 
-        $p_f_name = $row['first_name'];
-        $p_l_name = $row['last_name'];
-        $p_id = $row['character_id'];
-    }
+    //     $p_f_name = $row['first_name'];
+    //     $p_l_name = $row['last_name'];
+    //     $p_id = $row['character_id'];
+    // }
 ?>
 
 <!DOCTYPE html>
@@ -69,6 +71,32 @@ $db = mysqli_connect("localhost", "root", "", "rpg");
                     <span>
                         <?php echo $name?>
                     </span>
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+            <div class="place">
+                <div class="l">Reputation</div>
+                <div class="content">
+                    <span>
+                        <?php echo $rep?>
+                    </span>
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+            <div class="place">
+                <div class="l">Wanted</div>
+                <div class="content">
+                    
+                        <?php 
+                            for ($i=0; $i < $wanted; $i++) { 
+                                echo '<img src="img/full_star.png"> </img>';
+                            }
+                            
+                            for ($i=$wanted; $i < 5; $i++) { 
+                                echo '<img src="img/empty_star.png"> </img>';
+                            }
+                        ?>
+                    
                 </div>
                 <div style="clear: both;"></div>
             </div>

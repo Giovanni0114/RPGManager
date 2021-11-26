@@ -44,7 +44,7 @@ function alertContents(http_request) {
 	if (http_request.readyState == 4) {
 		if (http_request.status == 200) {
 			console.log(http_request.responseText);
-			// window.location.reload();
+			window.location.reload();
 		} 
 	else {
 		alert('Wystąpił problem z zapytaniem.');

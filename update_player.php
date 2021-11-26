@@ -9,7 +9,7 @@
 
 	$db = mysqli_connect("localhost", "root", "", "rpg");
 	$query = "UPDATE `tbplayer` SET `first_name`='$fname',`last_name`='$lname',`phone_number`='$p_number',`fav_class`=$fav,`hours_played`=$h_played WHERE player_id = $id";
-
+	echo $query;
 	$result = mysqli_query($db, $query);
 	header("Location:players.php?id=$id");
 ?>
