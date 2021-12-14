@@ -10,6 +10,7 @@ function readTextFile(file, callback) {
 	rawFile.onreadystatechange = function () {
 		if (rawFile.readyState === 4 && rawFile.status == "200") {
 			callback(rawFile.responseText);
+
 		}
 	}
 	rawFile.send(null);
@@ -31,9 +32,8 @@ function show(url) {
 			document.getElementById("result").innerHTML = '';
 		else
 			makeRequest(url);
-
+			
 		curShown = undefined;
-
 	}
 }
 function makeRequest(url) {
@@ -51,7 +51,7 @@ function alertContents(http_request) {
 	if (http_request.readyState == 4) {
 		if (http_request.status == 200) {
 			document.getElementById("result").innerHTML = http_request.responseText;
-
+			console.log(http_request.JSON);
 			// console.log(http_request.responseText);
 		} else {
 			alert('Wystąpił problem z zapytaniem.');
