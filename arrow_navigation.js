@@ -1,7 +1,7 @@
-let a = document.getElementsByClassName('counting');
-let b = document.getElementsByClassName('counting selected')[0].innerHTML;
+let counters = document.getElementsByClassName('counting');
+let current = document.getElementsByClassName('counting selected')[0].innerHTML;
 
-let count = a[a.length - 1].innerHTML;
+let last = counters[counters.length - 1].innerHTML;
 
 
 
@@ -9,27 +9,29 @@ let count = a[a.length - 1].innerHTML;
 document.onkeydown = function(event){
 	switch (event.keyCode){
 		case 37: //left
-			if(a != 1){
-				window.location.assign(window.location.pathname.split('/')[2]+"?id="+String(b*1-1))
+			if (current == 1) window.location.assign(window.location.pathname.split('/')[2]+"?id="+String(last))
+			else window.location.assign(window.location.pathname.split('/')[2]+"?id="+String(current*1-1))
+		
+		break;
+		case 38: //up
+			if(current != last){
+			window.location.assign(window.location.pathname.split('/')[2]+"?id="+String(last))
 			}
-				break;
-				case 38: //up
-				if(a != b){
-					window.location.assign(window.location.pathname.split('/')[2]+"?id="+String(count))
-				}
-				break;
-				case 39: //right
-				if(a != 1){
-					window.location.assign(window.location.pathname.split('/')[2]+"?id="+String(b*1+1))
-				}
-				break;
-				case 40: //left
-				
-				if(a != 1){
-					window.location.assign(window.location.pathname.split('/')[2]+"?id=1")
-				}
-				break;
+		break;
+		
+		case 39: //right
+		if (last == current) window.location.assign(window.location.pathname.split('/')[2]+"?id=1")
+		else{
+			window.location.assign(window.location.pathname.split('/')[2]+"?id="+String(current*1+1))
+		}
+		break;
+
+		case 40: //down
+		if(current != 1){
+			window.location.assign(window.location.pathname.split('/')[2]+"?id=1")
+		}
+		break;
 		default:
-			break;
+		break;
 	}
 }
