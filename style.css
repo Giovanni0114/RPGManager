@@ -320,7 +320,8 @@ td:hover::after{
 	display: inline-block;
 	width: var(--mod);
 	transition: ease-in-out all 0.3s;
-	
+	/* border-bottom: solid #fff 3px; */
+	margin: 8px;
 }
 
 .counting:hover{
@@ -330,9 +331,9 @@ td:hover::after{
 }
 
 .selected{
-	/* text-decoration: underline; */
+	
 	border-bottom: solid blanchedalmond 3px;
-	margin: 8px;
+	
 }
 
 #contener{
