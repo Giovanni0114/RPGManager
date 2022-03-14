@@ -9,25 +9,25 @@ function dragElement(elmnt) {
 	  elmnt.onmousedown = dragMouseDown;
 	}
       
-	function dragMouseDown(e) {
-	  e = e || window.event;
-	  e.preventDefault();
+	function dragMouseDown(event) {
+	  event = event || window.event;
+	  event.preventDefault();
 	  // get the mouse cursor position at startup:
-	  pos3 = e.clientX;
-	  pos4 = e.clientY;
+	  pos3 = event.clientX;
+	  pos4 = event.clientY;
 	  document.onmouseup = closeDragElement;
 	  // call a function whenever the cursor moves:
 	  document.onmousemove = elementDrag;
 	}
       
-	function elementDrag(e) {
-	  e = e || window.event;
-	  e.preventDefault();
+	function elementDrag(event) {
+	  event = event || window.event;
+	  event.preventDefault();
 	  // calculate the new cursor position:
-	  pos1 = pos3 - e.clientX;
-	  pos2 = pos4 - e.clientY;
-	  pos3 = e.clientX;
-	  pos4 = e.clientY;
+	  pos1 = pos3 - event.clientX;
+	  pos2 = pos4 - event.clientY;
+	  pos3 = event.clientX;
+	  pos4 = event.clientY;
 	  // set the element's new position:
 	  elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
 	  elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";

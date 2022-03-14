@@ -1,3 +1,8 @@
+// TODO Merge connection function into one
+// ! THIS FILE IS A KIND OF GARBAGE
+// But I love this garbage 
+
+
 var http_request = false;
 var curShown = undefined;
 var data = undefined;
@@ -10,7 +15,6 @@ function readTextFile(file, callback) {
 	rawFile.onreadystatechange = function () {
 		if (rawFile.readyState === 4 && rawFile.status == "200") {
 			callback(rawFile.responseText);
-
 		}
 	}
 	rawFile.send(null);
@@ -28,22 +32,17 @@ function show(url) {
 		makeRequest(url);
 	}
 	else {
-		if (url == curShown)
-			document.getElementById("result").innerHTML = '';
-		else
-			makeRequest(url);
-			
+		if (url == curShown) document.getElementById("result").innerHTML = '';
+		else makeRequest(url);
+
 		curShown = undefined;
 	}
 }
 function makeRequest(url) {
-
 	http_request = new XMLHttpRequest();
-
 	http_request.onreadystatechange = function () { alertContents(http_request); };
 	http_request.open('GET', url, true);
 	http_request.send(null);
-
 }
 
 function alertContents(http_request) {
